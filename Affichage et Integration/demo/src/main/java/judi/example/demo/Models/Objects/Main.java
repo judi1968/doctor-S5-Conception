@@ -242,7 +242,7 @@ public class Main {
             medicamentPatientResultats[i].setNomMedicament(medicamentPatient.getNomMedicament());
             medicamentPatientResultats[i].setEffetTotaleMedicament(medicamentPatient.getEffet());
             medicamentPatientResultats[i].setQuantite(medicamentPatient.getQuantite());
-            medicamentPatientResultats[i].setPrixTotale(medicamentPatient.getPrix());
+            medicamentPatientResultats[i].setPrixTotale(medicamentPatient.getPrix()/medicamentPatient.getQuantite());
             medicamentPatientResultats[i].setPrixInitiale(medicamentPatient.getPrix()/(medicamentPatient.getQuantite()));
             i++;
         }
@@ -282,7 +282,7 @@ public class Main {
             medicamentPatientResultats[i].setNomMedicament(medicamentPatient.getNomMedicament());
             medicamentPatientResultats[i].setEffetTotaleMedicament(medicamentPatient.getEffet());
             medicamentPatientResultats[i].setQuantite(medicamentPatient.getQuantite());
-            medicamentPatientResultats[i].setPrixTotale(medicamentPatient.getPrix());
+            medicamentPatientResultats[i].setPrixTotale(medicamentPatient.getPrix()/medicamentPatient.getQuantite());
             medicamentPatientResultats[i].setPrixInitiale(medicamentPatient.getPrix()/(medicamentPatient.getQuantite()));
             i++;
         }

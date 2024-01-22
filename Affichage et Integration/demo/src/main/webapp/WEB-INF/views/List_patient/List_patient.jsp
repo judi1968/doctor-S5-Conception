@@ -18,10 +18,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            animation: slideIn 1s ease-in-out;
         }
-
+        h1{
+            color: #ba0000;
+        }
         table {
-            width: 80%;
+            width: 30%;
             margin: 30px auto;
             border-collapse: collapse;
             border-radius: 8px;
@@ -36,42 +40,50 @@
         }
 
         th {
-            background-color: #008CBA;
+            background-color: #ba0000;
             color: white;
         }
 
         tr:hover {
             background-color: #f5f5f5;
         }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
-   
+   <center>
+    <h1 style="margin-top: 5px;">Liste patient</h1>
+   </center>
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th><center>Liste des patients</center></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <th></th>
                 <th>Nom</th>
-                <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            
-                
-                
             <% for (Patient patient : patients) { %>
                 <tr>
-                    <td></td>
                     <td><%= patient.getNomPatient() %> </td>
-                    <td><a href="/predir_maladie?id_patient=<%= patient.getIdPatient() %>" style="background: #008CBA; padding: 15px 10px 15px 10px ;border-radius: 5px; color: white; margin-bottom: 15px; text-decoration: none;"> Predire maladie </a>
-                    </td>
+                    <td><a href="/predir_maladie?id_patient=<%= patient.getIdPatient() %>" style="background: #ba0000; padding: 15px 10px 15px 10px ;border-radius: 5px; color: white; margin-bottom: 15px; text-decoration: none;"> Predire maladie </a>
                 </tr>
             <% } %>
         </tbody>

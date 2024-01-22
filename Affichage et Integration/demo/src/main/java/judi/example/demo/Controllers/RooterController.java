@@ -73,12 +73,19 @@ public class RooterController {
         try {
             Main main = new Main();
             MedicamentPatientResultat[] medicament_patient = null;
+            Patient p = Patient.getPatientById(id_patient, null);
+            model.addAttribute("patient_name", p.getNomPatient());
             if (id_maladie==0) {
                 medicament_patient = main.getAllMedicamentPatient(id_patient);
             }else{
                 medicament_patient =  main.getMedicamentPatientByIdMaladie(id_patient,id_maladie);
             }
             model.addAttribute("medicament_patient", medicament_patient);
+            double prixTotale = 0;
+            for (MedicamentPatientResultat medicamentPatientResultat : medicament_patient) {
+                prixTotale = prixTotale+medicamentPatientResultat.getPrixTotale();
+            }
+            model.addAttribute("prixTotale", prixTotale);
             
             return "resultat/list_medicament";
         } catch (Exception e) {
@@ -95,7 +102,7 @@ public class RooterController {
             PatientMaladie[] patientMaladies =  main.devineMaladieByIdClient(id_patient);
             model.addAttribute("id_patient", id_patient);
             model.addAttribute("patientMaladies", patientMaladies);
-
+        
             return "resultat/List_maladie_patient";
         } catch (Exception e) {
             // TODO: handle exception
